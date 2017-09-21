@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Windows.Forms;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using TrelloMemberAdder.Properties;
 using TrelloNet;
 
@@ -194,11 +194,25 @@ namespace TrelloMemberAdder
 			m_progressBar.Maximum	= length;
 			m_progressBar.Value		= 0;
 
+			SetButtonEnabled( false );
+
 			for ( int i = 0; i < length; i++ )
 			{
 				await cards[ i ];
 				m_progressBar.Value = i + 1;
 			}
+
+			SetButtonEnabled( true );
+		}
+
+		/// <summary>
+		/// ボタンが有効かどうかを設定します
+		/// </summary>
+		private void SetButtonEnabled( bool isEnabled )
+		{
+			m_authButton	.Enabled	= 
+			m_addButton		.Enabled	= 
+			m_removeButton	.Enabled	= isEnabled;
 		}
 	}
 }
