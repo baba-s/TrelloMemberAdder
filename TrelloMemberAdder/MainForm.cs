@@ -181,38 +181,45 @@ namespace TrelloMemberAdder
 			Func<Card, Task>			selector
 		)
 		{
-			var member  = SelectedMember;
-			var cards   = SelectedCards
+			var member	= SelectedMember;
+			var cards	= SelectedCards
 				.Where( c => predicate( c, member ) )
 				.Select( selector )
 				.ToArray()
 			;
 			
-			var length = cards.Length;
+			var length	= cards.Length;
 
-			m_progressBar.Minimum	= 0;
+			if ( length <= 0 )
+			{
+				m_progressBar.Maximum	= 1;
+				m_progressBar.Value		= 1;
+
+				return;
+			}
+			
 			m_progressBar.Maximum	= length;
 			m_progressBar.Value		= 0;
 
-			SetButtonEnabled( false );
+			SetPanelEnabled( false );
 
 			for ( int i = 0; i < length; i++ )
 			{
 				await cards[ i ];
 				m_progressBar.Value = i + 1;
 			}
+			
+			m_progressBar.Value = length;
 
-			SetButtonEnabled( true );
+			SetPanelEnabled( true );
 		}
 
 		/// <summary>
-		/// ボタンが有効かどうかを設定します
+		/// パネルが有効かどうかを設定します
 		/// </summary>
-		private void SetButtonEnabled( bool isEnabled )
+		private void SetPanelEnabled( bool isEnabled )
 		{
-			m_authButton	.Enabled	= 
-			m_addButton		.Enabled	= 
-			m_removeButton	.Enabled	= isEnabled;
+			m_panel.Enabled = isEnabled;
 		}
 	}
 }

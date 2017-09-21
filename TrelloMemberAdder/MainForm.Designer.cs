@@ -43,12 +43,14 @@
 			this.m_removeButton = new System.Windows.Forms.Button();
 			this.m_authLabel = new System.Windows.Forms.Label();
 			this.m_progressBar = new System.Windows.Forms.ProgressBar();
+			this.m_panel = new System.Windows.Forms.Panel();
+			this.m_panel.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(12, 9);
+			this.label1.Location = new System.Drawing.Point(5, 3);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(58, 15);
 			this.label1.TabIndex = 2;
@@ -57,7 +59,7 @@
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(12, 37);
+			this.label2.Location = new System.Drawing.Point(5, 31);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(47, 15);
 			this.label2.TabIndex = 3;
@@ -66,7 +68,7 @@
 			// m_tokenTextBox
 			// 
 			this.m_tokenTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::TrelloMemberAdder.Properties.Settings.Default, "Token", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.m_tokenTextBox.Location = new System.Drawing.Point(76, 34);
+			this.m_tokenTextBox.Location = new System.Drawing.Point(69, 28);
 			this.m_tokenTextBox.Name = "m_tokenTextBox";
 			this.m_tokenTextBox.Size = new System.Drawing.Size(550, 22);
 			this.m_tokenTextBox.TabIndex = 1;
@@ -76,7 +78,7 @@
 			// m_keyTextBox
 			// 
 			this.m_keyTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::TrelloMemberAdder.Properties.Settings.Default, "Key", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.m_keyTextBox.Location = new System.Drawing.Point(76, 6);
+			this.m_keyTextBox.Location = new System.Drawing.Point(69, 0);
 			this.m_keyTextBox.Name = "m_keyTextBox";
 			this.m_keyTextBox.Size = new System.Drawing.Size(275, 22);
 			this.m_keyTextBox.TabIndex = 0;
@@ -85,7 +87,7 @@
 			// 
 			// m_authButton
 			// 
-			this.m_authButton.Location = new System.Drawing.Point(480, 62);
+			this.m_authButton.Location = new System.Drawing.Point(473, 56);
 			this.m_authButton.Name = "m_authButton";
 			this.m_authButton.Size = new System.Drawing.Size(150, 23);
 			this.m_authButton.TabIndex = 4;
@@ -97,7 +99,7 @@
 			// 
 			this.m_boardComboBox.Enabled = false;
 			this.m_boardComboBox.FormattingEnabled = true;
-			this.m_boardComboBox.Location = new System.Drawing.Point(76, 91);
+			this.m_boardComboBox.Location = new System.Drawing.Point(69, 85);
 			this.m_boardComboBox.Name = "m_boardComboBox";
 			this.m_boardComboBox.Size = new System.Drawing.Size(550, 23);
 			this.m_boardComboBox.TabIndex = 5;
@@ -107,7 +109,7 @@
 			// 
 			this.m_listComboBox.Enabled = false;
 			this.m_listComboBox.FormattingEnabled = true;
-			this.m_listComboBox.Location = new System.Drawing.Point(76, 120);
+			this.m_listComboBox.Location = new System.Drawing.Point(69, 114);
 			this.m_listComboBox.Name = "m_listComboBox";
 			this.m_listComboBox.Size = new System.Drawing.Size(550, 23);
 			this.m_listComboBox.TabIndex = 6;
@@ -116,7 +118,7 @@
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(12, 94);
+			this.label3.Location = new System.Drawing.Point(5, 88);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(42, 15);
 			this.label3.TabIndex = 7;
@@ -125,7 +127,7 @@
 			// label4
 			// 
 			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(12, 123);
+			this.label4.Location = new System.Drawing.Point(5, 117);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(38, 15);
 			this.label4.TabIndex = 8;
@@ -135,7 +137,7 @@
 			// 
 			this.m_memberComboBox.Enabled = false;
 			this.m_memberComboBox.FormattingEnabled = true;
-			this.m_memberComboBox.Location = new System.Drawing.Point(76, 149);
+			this.m_memberComboBox.Location = new System.Drawing.Point(69, 143);
 			this.m_memberComboBox.Name = "m_memberComboBox";
 			this.m_memberComboBox.Size = new System.Drawing.Size(550, 23);
 			this.m_memberComboBox.TabIndex = 9;
@@ -144,7 +146,7 @@
 			// label5
 			// 
 			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(12, 152);
+			this.label5.Location = new System.Drawing.Point(5, 146);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(53, 15);
 			this.label5.TabIndex = 10;
@@ -153,7 +155,7 @@
 			// m_addButton
 			// 
 			this.m_addButton.Enabled = false;
-			this.m_addButton.Location = new System.Drawing.Point(324, 188);
+			this.m_addButton.Location = new System.Drawing.Point(317, 182);
 			this.m_addButton.Name = "m_addButton";
 			this.m_addButton.Size = new System.Drawing.Size(150, 23);
 			this.m_addButton.TabIndex = 11;
@@ -164,7 +166,7 @@
 			// m_removeButton
 			// 
 			this.m_removeButton.Enabled = false;
-			this.m_removeButton.Location = new System.Drawing.Point(480, 188);
+			this.m_removeButton.Location = new System.Drawing.Point(473, 182);
 			this.m_removeButton.Name = "m_removeButton";
 			this.m_removeButton.Size = new System.Drawing.Size(150, 23);
 			this.m_removeButton.TabIndex = 12;
@@ -176,7 +178,7 @@
 			// 
 			this.m_authLabel.AutoSize = true;
 			this.m_authLabel.ForeColor = System.Drawing.Color.Green;
-			this.m_authLabel.Location = new System.Drawing.Point(409, 66);
+			this.m_authLabel.Location = new System.Drawing.Point(402, 60);
 			this.m_authLabel.Name = "m_authLabel";
 			this.m_authLabel.Size = new System.Drawing.Size(65, 15);
 			this.m_authLabel.TabIndex = 13;
@@ -184,31 +186,39 @@
 			// 
 			// m_progressBar
 			// 
-			this.m_progressBar.Location = new System.Drawing.Point(15, 188);
+			this.m_progressBar.Location = new System.Drawing.Point(8, 182);
 			this.m_progressBar.Name = "m_progressBar";
 			this.m_progressBar.Size = new System.Drawing.Size(303, 23);
 			this.m_progressBar.TabIndex = 14;
+			// 
+			// m_panel
+			// 
+			this.m_panel.Controls.Add(this.m_progressBar);
+			this.m_panel.Controls.Add(this.m_authLabel);
+			this.m_panel.Controls.Add(this.m_removeButton);
+			this.m_panel.Controls.Add(this.m_addButton);
+			this.m_panel.Controls.Add(this.label5);
+			this.m_panel.Controls.Add(this.m_memberComboBox);
+			this.m_panel.Controls.Add(this.label4);
+			this.m_panel.Controls.Add(this.label3);
+			this.m_panel.Controls.Add(this.m_listComboBox);
+			this.m_panel.Controls.Add(this.m_boardComboBox);
+			this.m_panel.Controls.Add(this.m_authButton);
+			this.m_panel.Controls.Add(this.label2);
+			this.m_panel.Controls.Add(this.label1);
+			this.m_panel.Controls.Add(this.m_tokenTextBox);
+			this.m_panel.Controls.Add(this.m_keyTextBox);
+			this.m_panel.Location = new System.Drawing.Point(12, 12);
+			this.m_panel.Name = "m_panel";
+			this.m_panel.Size = new System.Drawing.Size(626, 210);
+			this.m_panel.TabIndex = 15;
 			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(642, 223);
-			this.Controls.Add(this.m_progressBar);
-			this.Controls.Add(this.m_authLabel);
-			this.Controls.Add(this.m_removeButton);
-			this.Controls.Add(this.m_addButton);
-			this.Controls.Add(this.label5);
-			this.Controls.Add(this.m_memberComboBox);
-			this.Controls.Add(this.label4);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.m_listComboBox);
-			this.Controls.Add(this.m_boardComboBox);
-			this.Controls.Add(this.m_authButton);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.label1);
-			this.Controls.Add(this.m_tokenTextBox);
-			this.Controls.Add(this.m_keyTextBox);
+			this.ClientSize = new System.Drawing.Size(642, 233);
+			this.Controls.Add(this.m_panel);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
@@ -216,8 +226,9 @@
 			this.Text = "Trello メンバー追加くん";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
 			this.Load += new System.EventHandler(this.MainForm_Load);
+			this.m_panel.ResumeLayout(false);
+			this.m_panel.PerformLayout();
 			this.ResumeLayout(false);
-			this.PerformLayout();
 
 		}
 
@@ -238,6 +249,7 @@
 		private System.Windows.Forms.Button m_removeButton;
 		private System.Windows.Forms.Label m_authLabel;
 		private System.Windows.Forms.ProgressBar m_progressBar;
+		private System.Windows.Forms.Panel m_panel;
 	}
 }
 
