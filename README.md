@@ -1,6 +1,6 @@
 # Trello メンバー追加くん
 
-![2017-09-21_170610](https://user-images.githubusercontent.com/6134875/30685259-4adba184-9eef-11e7-9f25-ea9d470be200.png)
+![2017-09-21_171744](https://user-images.githubusercontent.com/6134875/30685772-fba16c00-9ef0-11e7-83eb-bd629de3fb7c.png)
 
 Trello 内の指定されたメンバーを複数のカードに一括で追加・削除するツールです。
 
