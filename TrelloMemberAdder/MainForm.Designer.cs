@@ -42,6 +42,7 @@
 			this.m_addButton = new System.Windows.Forms.Button();
 			this.m_removeButton = new System.Windows.Forms.Button();
 			this.m_authLabel = new System.Windows.Forms.Label();
+			this.m_progressBar = new System.Windows.Forms.ProgressBar();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -181,11 +182,19 @@
 			this.m_authLabel.TabIndex = 13;
 			this.m_authLabel.Text = "認証済み";
 			// 
-			// Form1
+			// m_progressBar
+			// 
+			this.m_progressBar.Location = new System.Drawing.Point(15, 188);
+			this.m_progressBar.Name = "m_progressBar";
+			this.m_progressBar.Size = new System.Drawing.Size(303, 23);
+			this.m_progressBar.TabIndex = 14;
+			// 
+			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(642, 223);
+			this.Controls.Add(this.m_progressBar);
 			this.Controls.Add(this.m_authLabel);
 			this.Controls.Add(this.m_removeButton);
 			this.Controls.Add(this.m_addButton);
@@ -203,7 +212,7 @@
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
-			this.Name = "Form1";
+			this.Name = "MainForm";
 			this.Text = "Trello メンバー追加くん";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
 			this.Load += new System.EventHandler(this.MainForm_Load);
@@ -228,6 +237,7 @@
 		private System.Windows.Forms.Button m_addButton;
 		private System.Windows.Forms.Button m_removeButton;
 		private System.Windows.Forms.Label m_authLabel;
+		private System.Windows.Forms.ProgressBar m_progressBar;
 	}
 }
 

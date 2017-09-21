@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using System.Threading.Tasks;
 using TrelloMemberAdder.Properties;
 using TrelloNet;
 
@@ -64,7 +65,11 @@ namespace TrelloMemberAdder
 
 			try
 			{
-				m_boardComboBox.Set( m_trello.Boards.ForMe() );
+				var boards = m_trello.Boards
+					.ForMe()
+					.Where( c => !c.Closed )
+				;
+				m_boardComboBox.Set( boards );
 			}
 			catch
 			{
@@ -146,28 +151,53 @@ namespace TrelloMemberAdder
 		/// <summary>
 		/// 追加ボタンが押された時に呼び出されます
 		/// </summary>
-		private void m_addButton_Click( object sender, EventArgs e )
+		private async void m_addButton_Click( object sender, EventArgs e )
 		{
-			var member	= SelectedMember;
-			var cards	= SelectedCards.Where( c => !c.IdMembers.Contains( member.Id ) );
-
-			foreach ( var n in cards )
-			{
-				m_trello.Cards.AddMember( n, SelectedMember );
-			}
+			await Execute
+			( 
+				predicate	: ( card, member ) => !card.IdMembers.Contains( member.Id ), 
+				selector	: card => m_trello.Async.Cards.AddMember( card, SelectedMember )
+			);
 		}
 		
 		/// <summary>
 		/// 削除ボタンが押された時に呼び出されます
 		/// </summary>
-		private void m_removeButton_Click( object sender, EventArgs e )
+		private async void m_removeButton_Click( object sender, EventArgs e )
 		{
-			var member	= SelectedMember;
-			var cards	= SelectedCards.Where( c => c.IdMembers.Contains( member.Id ) );
+			await Execute
+			( 
+				predicate	: ( card, member ) => card.IdMembers.Contains( member.Id ), 
+				selector	: card => m_trello.Async.Cards.RemoveMember( card, SelectedMember )
+			);
+		}
 
-			foreach ( var n in cards )
+		/// <summary>
+		/// 指定された条件に合わせて処理を実行します
+		/// </summary>
+		private async Task Execute
+		( 
+			Func<Card, Member, bool>	predicate	, 
+			Func<Card, Task>			selector
+		)
+		{
+			var member  = SelectedMember;
+			var cards   = SelectedCards
+				.Where( c => predicate( c, member ) )
+				.Select( selector )
+				.ToArray()
+			;
+			
+			var length = cards.Length;
+
+			m_progressBar.Minimum	= 0;
+			m_progressBar.Maximum	= length;
+			m_progressBar.Value		= 0;
+
+			for ( int i = 0; i < length; i++ )
 			{
-				m_trello.Cards.RemoveMember( n, SelectedMember );
+				await cards[ i ];
+				m_progressBar.Value = i + 1;
 			}
 		}
 	}
