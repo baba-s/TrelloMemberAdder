@@ -77,7 +77,7 @@ namespace TrelloMemberAdder
 			}
 			finally
 			{
-				m_authLabel		.Enabled = 
+				m_authLabel		.Visible = 
 				m_boardComboBox	.Enabled = isFinish;
 			}
 		}

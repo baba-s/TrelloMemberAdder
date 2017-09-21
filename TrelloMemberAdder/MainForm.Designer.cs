@@ -177,13 +177,13 @@
 			// m_authLabel
 			// 
 			this.m_authLabel.AutoSize = true;
-			this.m_authLabel.Enabled = false;
 			this.m_authLabel.ForeColor = System.Drawing.Color.Green;
 			this.m_authLabel.Location = new System.Drawing.Point(402, 60);
 			this.m_authLabel.Name = "m_authLabel";
 			this.m_authLabel.Size = new System.Drawing.Size(65, 15);
 			this.m_authLabel.TabIndex = 13;
 			this.m_authLabel.Text = "認証済み";
+			this.m_authLabel.Visible = false;
 			// 
 			// m_progressBar
 			// 
