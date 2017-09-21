@@ -177,6 +177,7 @@
 			// m_authLabel
 			// 
 			this.m_authLabel.AutoSize = true;
+			this.m_authLabel.Enabled = false;
 			this.m_authLabel.ForeColor = System.Drawing.Color.Green;
 			this.m_authLabel.Location = new System.Drawing.Point(402, 60);
 			this.m_authLabel.Name = "m_authLabel";
