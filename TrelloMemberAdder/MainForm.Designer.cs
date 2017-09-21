@@ -1,6 +1,6 @@
 ﻿namespace TrelloMemberAdder
 {
-	partial class Form1
+	partial class MainForm
 	{
 		/// <summary>
 		/// 必要なデザイナー変数です。
@@ -205,8 +205,8 @@
 			this.MinimizeBox = false;
 			this.Name = "Form1";
 			this.Text = "Trello メンバー追加くん";
-			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
-			this.Load += new System.EventHandler(this.Form1_Load);
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+			this.Load += new System.EventHandler(this.MainForm_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

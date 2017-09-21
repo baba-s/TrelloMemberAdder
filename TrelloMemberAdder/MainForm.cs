@@ -9,10 +9,16 @@ using TrelloNet;
 
 namespace TrelloMemberAdder
 {
-	public partial class Form1 : Form
+	public partial class MainForm : Form
 	{
+		//====================================================================================
+		// 変数
+		//====================================================================================
 		private Trello m_trello;
 		
+		//====================================================================================
+		// プロパティ
+		//====================================================================================
 		private Board	SelectedBoard	{ get { return m_boardComboBox.SelectedItem as Board;	} }
 		private List	SelectedList	{ get { return m_listComboBox.SelectedItem as List;		} }
 		private Member	SelectedMember	{ get { return m_memberComboBox.SelectedItem as Member;	} }
@@ -22,12 +28,21 @@ namespace TrelloMemberAdder
 			get { return SelectedList != null ? m_trello.Cards.ForList( SelectedList ) : new Card[ 0 ];	}
 		}
 
-		public Form1()
+		//====================================================================================
+		// 関数
+		//====================================================================================
+		/// <summary>
+		/// コンストラクタ
+		/// </summary>
+		public MainForm()
 		{
 			InitializeComponent();
 		}
 
-		private void Form1_Load( object sender, EventArgs e )
+		/// <summary>
+		/// フォームが読み込まれた時に呼び出されます
+		/// </summary>
+		private void MainForm_Load( object sender, EventArgs e )
 		{
 			var key = m_keyTextBox.Text;
 			if ( string.IsNullOrWhiteSpace( key ) ) return;
@@ -40,6 +55,9 @@ namespace TrelloMemberAdder
 			OnAuthorize();
 		}
 
+		/// <summary>
+		/// 認証された時に呼び出します
+		/// </summary>
 		private void OnAuthorize()
 		{
 			var isFinish = true;
@@ -59,11 +77,17 @@ namespace TrelloMemberAdder
 			}
 		}
 
-		private void Form1_FormClosing( object sender, FormClosingEventArgs e )
+		/// <summary>
+		/// フォームが閉じられる時に呼び出されます
+		/// </summary>
+		private void MainForm_FormClosing( object sender, FormClosingEventArgs e )
 		{
 			Settings.Default.Save();
 		}
 		
+		/// <summary>
+		/// キーかトークンが入力された時に呼び出されます
+		/// </summary>
 		private void OnInput( object sender, EventArgs e )
 		{
 			var key				= m_keyTextBox.Text;
@@ -75,6 +99,9 @@ namespace TrelloMemberAdder
 			m_authButton.Enabled = isEnabled;
 		}
 
+		/// <summary>
+		/// 認証ボタンが押された時に呼び出されます
+		/// </summary>
 		private void authButton_Click( object sender, EventArgs e )
 		{
 			m_trello = new Trello( m_keyTextBox.Text );
@@ -83,6 +110,9 @@ namespace TrelloMemberAdder
 			OnAuthorize();
 		}
 
+		/// <summary>
+		/// ボードのコンボボックスで選択されている項目が変更された時に呼び出されます
+		/// </summary>
 		private void m_boardComboBox_SelectedValueChanged( object sender, EventArgs e )
 		{
 			var board = m_boardComboBox.SelectedItem as Board;
@@ -95,7 +125,10 @@ namespace TrelloMemberAdder
 			
 			OnSelected( sender, e );
 		}
-
+		
+		/// <summary>
+		/// コンボボックスで選択されている項目が変更された時に呼び出されます
+		/// </summary>
 		private void OnSelected( object sender, EventArgs e )
 		{
 			var isEnabledBoard	= null != SelectedBoard		;
@@ -109,7 +142,10 @@ namespace TrelloMemberAdder
 			m_addButton			.Enabled = 
 			m_removeButton		.Enabled = isEnabled;
 		}
-
+		
+		/// <summary>
+		/// 追加ボタンが押された時に呼び出されます
+		/// </summary>
 		private void m_addButton_Click( object sender, EventArgs e )
 		{
 			var member	= SelectedMember;
@@ -120,7 +156,10 @@ namespace TrelloMemberAdder
 				m_trello.Cards.AddMember( n, SelectedMember );
 			}
 		}
-
+		
+		/// <summary>
+		/// 削除ボタンが押された時に呼び出されます
+		/// </summary>
 		private void m_removeButton_Click( object sender, EventArgs e )
 		{
 			var member	= SelectedMember;
@@ -134,31 +173,34 @@ namespace TrelloMemberAdder
 	}
 }
 
+/// <summary>
+/// ComboBox 型の拡張メソッドを管理するクラス
+/// </summary>
 public static class ComboBoxExt
 {
+	/// <summary>
+	/// コレクションの要素を設定します
+	/// </summary>
 	public static void Set( this ComboBox self, IEnumerable<object> items )
 	{
 		self.Items.Set( items );
 	}
 }
 
+/// <summary>
+/// IList 型の拡張メソッドを管理するクラス
+/// </summary>
 public static class IListExt
 {
+	/// <summary>
+	/// 要素を設定します
+	/// </summary>
 	public static void Set( this IList self, IEnumerable<object> items )
 	{
 		self.Clear();
 		foreach ( var n in items )
 		{
 			self.Add( n );
-		}
-	}
-
-	public static void Set( this IList self, params object[] items )
-	{
-		self.Clear();
-		for ( int i = 0; i < items.Length; i++ )
-		{
-			self.Add( items[ i ] );
 		}
 	}
 }
